@@ -16,6 +16,11 @@ body {
     justify-content: center;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+}
+
 label {
     display: block;
     margin-top: 1rem;
