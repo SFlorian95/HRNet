@@ -4,9 +4,13 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { add } from '../../features/employeeSlice'
 import { states } from '../../utils/list'
+import SelecMenu from '../../features/selectMenu/SelectMenu'
+import Modal from '../../features/modal/Modal'
 
 const CreateEmployee = () => {
   const dispatch = useDispatch()
+
+  const [modalOpen, setModalOpen] = useState(false)
 
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -36,8 +40,9 @@ const CreateEmployee = () => {
     console.log(data)
 
     dispatch(add(data))
+    setModalOpen(true)
   }
-
+  
   return (
     <div className="create-employee">
       <div className="title">
@@ -93,15 +98,13 @@ const CreateEmployee = () => {
             />
 
             <label htmlFor="state">State</label>
-            <select
-              name="state"
-              id="state"
-              onChange={(e) => setState(e.target.value)}
-            >
-              {states.map((item) => {
-                return <option key={`${item.abbreviation}-${item.index}`} value={item.abbreviation}>{item.name}</option>
-              })}
-            </select>
+            <SelecMenu 
+            placeHolder="Select.." 
+            options={states}
+            nameKey1="name"
+            nameKey2="abbreviation"
+            onChange={(e) => setState(e.target.value)}
+            />
 
             <label htmlFor="zip-code">Zip Code</label>
             <input
@@ -125,6 +128,7 @@ const CreateEmployee = () => {
           </select>
           <button>Save</button>
         </form>
+        {modalOpen && <Modal setModalOpen={setModalOpen} />}
       </div>
     </div>
   )
