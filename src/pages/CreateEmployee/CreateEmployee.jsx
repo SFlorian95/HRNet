@@ -4,13 +4,13 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { add } from '../../features/employeeSlice'
 import { states } from '../../utils/list'
-import SelecMenu from '../../features/selectMenu/SelectMenu'
-import Modal from '../../features/modal/Modal'
+import CustomSelect from '../../features/selectMenu/CustomSelect'
+import CustomModal from '../../features/modal/CustomModal'
 
 const CreateEmployee = () => {
   const dispatch = useDispatch()
 
-  const [modalOpen, setModalOpen] = useState(false)
+  const [modalIsDisplayed, setModalIsDisplayed] = useState(false)
 
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -40,9 +40,9 @@ const CreateEmployee = () => {
     console.log(data)
 
     dispatch(add(data))
-    setModalOpen(true)
+    setModalIsDisplayed(true)
   }
-  
+
   return (
     <div className="create-employee">
       <div className="title">
@@ -98,12 +98,13 @@ const CreateEmployee = () => {
             />
 
             <label htmlFor="state">State</label>
-            <SelecMenu 
-            placeHolder="Select.." 
-            options={states}
-            nameKey1="name"
-            nameKey2="abbreviation"
-            onChange={(e) => setState(e.target.value)}
+            <CustomSelect
+              id="state"
+              name="state"
+              selected={state}
+              data={states}
+              onChange={(value) => setState(value)}
+              option={{ name: 'name', value: 'abbreviation' }}
             />
 
             <label htmlFor="zip-code">Zip Code</label>
@@ -115,20 +116,31 @@ const CreateEmployee = () => {
           </fieldset>
 
           <label htmlFor="department">Department</label>
-          <select
-            name="department"
+          <CustomSelect
             id="department"
-            onChange={(e) => setDepartment(e.target.value)}
-          >
-            <option>Sales</option>
-            <option>Marketing</option>
-            <option>Engineering</option>
-            <option>Human Resources</option>
-            <option>Legal</option>
-          </select>
+            name="department"
+            selected={department}
+            data={[
+              'Sales',
+              'Marketing',
+              'Engineering',
+              'Human Resources',
+              'Legal',
+            ]}
+            onChange={(value) => setDepartment(value)}
+          />
+
           <button>Save</button>
         </form>
-        {modalOpen && <Modal setModalOpen={setModalOpen} />}
+        <CustomModal
+          isDisplayed={modalIsDisplayed}
+          onCloseModal={() => setModalIsDisplayed(false)}
+          content={
+            <div id="confirmation" className="modal">
+              Employee Created!
+            </div>
+          }
+        />
       </div>
     </div>
   )
