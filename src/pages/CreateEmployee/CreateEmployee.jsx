@@ -6,6 +6,7 @@ import { add } from '../../features/employeeSlice'
 import { states } from '../../utils/list'
 import CustomSelect from '../../features/selectMenu/CustomSelect'
 import CustomModal from '../../features/modal/CustomModal'
+import DatePicker from '../../features/datePicker/DatePicker'
 
 const CreateEmployee = () => {
   const dispatch = useDispatch()
@@ -24,7 +25,7 @@ const CreateEmployee = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
+    
     const data = {
       firstName,
       lastName,
@@ -67,11 +68,7 @@ const CreateEmployee = () => {
           />
 
           <label htmlFor="date-of-birth">Date of Birth</label>
-          <input
-            type="date"
-            id="date-of-birth"
-            onChange={(e) => setDateOfBirth(e.target.value)}
-          />
+          <DatePicker />
 
           <label htmlFor="start-date">Start Date</label>
           <input
