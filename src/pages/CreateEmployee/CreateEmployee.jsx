@@ -15,7 +15,7 @@ const CreateEmployee = () => {
 
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
-  const [dateOfBirth, setDateOfBirth] = useState('')
+  const [dateOfBirth, setDateOfBirth] = useState(new Date())
   const [startDate, setStartDate] = useState('')
   const [department, setDepartment] = useState('')
   const [street, setStreet] = useState('')
@@ -68,7 +68,7 @@ const CreateEmployee = () => {
           />
 
           <label htmlFor="date-of-birth">Date of Birth</label>
-          <DatePicker />
+          <DatePicker value={dateOfBirth} setValue={setDateOfBirth} />
 
           <label htmlFor="start-date">Start Date</label>
           <input
