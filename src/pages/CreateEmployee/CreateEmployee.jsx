@@ -6,7 +6,8 @@ import { add } from '../../features/employeeSlice'
 import { states } from '../../utils/list'
 import CustomSelect from '../../features/selectMenu/CustomSelect'
 import CustomModal from '../../features/modal/CustomModal'
-import DatePicker from '../../features/datePicker/DatePicker'
+// import DatePicker from '../../features/datePicker/DatePicker'
+import DatePicker from '../../features/datePicker/Calendar'
 
 const CreateEmployee = () => {
   const dispatch = useDispatch()
@@ -22,6 +23,9 @@ const CreateEmployee = () => {
   const [city, setCity] = useState('')
   const [state, setState] = useState('')
   const [zipCode, setZipcode] = useState('')
+
+  const handleDateOfBirthInput = (date) => setDateOfBirth(date)
+  const handleStartDateInput = (date) => setStartDate(date)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -68,14 +72,10 @@ const CreateEmployee = () => {
           />
 
           <label htmlFor="date-of-birth">Date of Birth</label>
-          <DatePicker />
+          <DatePicker id="date-of-birth" selected={dateOfBirth} onChange={handleDateOfBirthInput} />
 
           <label htmlFor="start-date">Start Date</label>
-          <input
-            type="date"
-            id="start-date"
-            onChange={(e) => setStartDate(e.target.value)}
-          />
+          <DatePicker id="start-date" selected={startDate} onChange={handleStartDateInput} />
 
           <fieldset className="address">
             <legend>Address</legend>
