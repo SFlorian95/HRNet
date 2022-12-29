@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import employeeReducer from '../features/employeeSlice'
+import datePickerReducer from '../features/datePicker/datePickerSlice'
 
 const logMiddleware = (store) => (next) => (action) => {
   // on affiche chaque action dans la console
@@ -10,6 +11,7 @@ const logMiddleware = (store) => (next) => (action) => {
 export default configureStore({
   reducer: {
     employee: employeeReducer,
+    datePicker: datePickerReducer,
   },
   middleware: (getDefaultMiddleware) => [
     ...getDefaultMiddleware({
