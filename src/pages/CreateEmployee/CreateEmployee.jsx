@@ -5,9 +5,10 @@ import { useDispatch } from 'react-redux'
 import { add } from '../../features/employeeSlice'
 import { states } from '../../utils/list'
 import CustomSelect from '../../features/selectMenu/CustomSelect'
-import CustomModal from '../../features/modal/CustomModal'
+//import CustomModal from '../../features/modal/CustomModal'
 // import DatePicker from '../../features/datePicker/DatePicker'
 import DatePicker from '../../features/datePicker/Calendar'
+import CustomModal from 'nawenn-modal-react'
 
 const CreateEmployee = () => {
   const dispatch = useDispatch()
