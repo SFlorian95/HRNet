@@ -5,8 +5,6 @@ import { useDispatch } from 'react-redux'
 import { add } from '../../features/employeeSlice'
 import { states } from '../../utils/list'
 import CustomSelect from '../../features/selectMenu/CustomSelect'
-//import CustomModal from '../../features/modal/CustomModal'
-// import DatePicker from '../../features/datePicker/DatePicker'
 import DatePicker from '../../features/datePicker/Calendar'
 import CustomModal from 'nawenn-modal-react'
 
@@ -53,9 +51,9 @@ const CreateEmployee = () => {
     <div className="create-employee">
       <div className="title">
         <h1>HRnet</h1>
+        <Link to="/employee-list">View Current Employees</Link>
       </div>
       <div className="container">
-        <Link to="/employee-list">View Current Employees</Link>
         <h2>Create Employee</h2>
         <form onSubmit={handleSubmit}>
           <label htmlFor="first-name">First Name</label>
