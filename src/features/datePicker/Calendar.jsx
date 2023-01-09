@@ -5,8 +5,6 @@ import { useEffect, useRef } from 'react'
 import CalendarHeader from './CalendarHeader'
 import {
   setSelectedDate,
-  selectOptions,
-  setOptions,
   selectDays,
 } from './datePickerSlice'
 import { weekDays, dateFormat } from './properties'
@@ -17,11 +15,6 @@ const Calendar = ({ id, selected, onChange = (data) => {} }) => {
   const [selectedDate, setSelectedDateValue] = useState('')
   // const options = useSelector(selectOptions)
   const days = useSelector(selectDays)
-
-  // useEffect(() => {
-  //   console.log('first time')
-  //   dispatch(setOptions({ language: 'en', format: 'mm/dd/yyyy', id: id }))
-  // }, [dispatch, id])
 
   const handleOnChange = (e) => {
     console.log('handleOnChange - selected:', selected)

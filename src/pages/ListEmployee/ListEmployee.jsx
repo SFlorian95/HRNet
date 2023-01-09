@@ -132,7 +132,7 @@ const ListEmployee = () => {
               className={previousPaginationClassName}
               onClick={handlePrevious}
             >
-              Previous
+              {"<"}
             </span>
             {Array(countPaginations)
               .fill()
@@ -146,7 +146,7 @@ const ListEmployee = () => {
                 </button>
               ))}
             <span className={nextPaginationClassName} onClick={handleNext}>
-              Next
+              {">"}
             </span>
           </div>
         </section>
